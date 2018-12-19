@@ -69,15 +69,12 @@ import java.util.*;
         public void setC(double c) { this.c = c; }
 
 
-        private List<Double> sortTriangle (){
+        private List<Double> sortTriangle () {
             List<Double> triangleList = Arrays.asList(a, b, c);
             triangleList.sort(Comparator.naturalOrder());
-            setA(triangleList.get(0));
-            setB(triangleList.get(1));
-            setC(triangleList.get(2));
-            //System.out.println("bandymas " + triangleList);
             return triangleList;
         }
+
 
 
         @Override
@@ -86,30 +83,24 @@ import java.util.*;
 
             if (this == o) return true;
 
-            if (o == null || getClass() != o.getClass()) return false;
-
+            if (o == null || this.getClass() != o.getClass()) return false;
 
             Trikampis trikampis = (Trikampis) o;
-//            trikampis.SortTriangle ();
-//            System.out.println("trikamapio krastines " + trikampis.getA()  + " " + trikampis.getB() + " " + trikampis.getC());
-//            System.out.println("trikampis.a " + trikampis.a);
+            List<Double> t1 = this.sortTriangle();
+            List<Double> t2 = trikampis.sortTriangle();
 
-            return Double.compare(trikampis.a, a) == 0 &&
-
-                    Double.compare(trikampis.b, b) == 0 &&
-
-                    Double.compare(trikampis.c, c) == 0;
+            return  Double.compare(t1.get(0), t2.get(0)) == 0 &&
+                    Double.compare(t1.get(1), t2.get(1)) == 0 &&
+                    Double.compare(t1.get(2), t2.get(2)) == 0;
         }
+
 
 
         @Override
 
         public int hashCode() {
-
-            return Objects.hash(sortTriangle ());
-
+            return Objects.hash(sortTriangle());
         }
-
 
 
     }
