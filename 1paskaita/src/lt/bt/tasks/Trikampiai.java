@@ -21,19 +21,21 @@ import java.util.*;
 
 
             Set<Trikampis> trikampiai = new HashSet<>();
+            Trikampis trik1 = new Trikampis(3, 4, 5);
+            Trikampis trik2 = new Trikampis(3, 3, 3);
+            Trikampis trik3 = new Trikampis(3, 5, 4);
 
 
+            trikampiai.add(trik1);
+            trikampiai.add(trik2);
+            trikampiai.add(trik3);
 
-            trikampiai.add(new Trikampis(3, 4, 5));
-
-            trikampiai.add(new Trikampis(3, 3, 3));
-
-            trikampiai.add(new Trikampis(3, 5, 4));
-
+            System.out.println("Viso skirtingu trikampiu " + trikampiai.size());
 
 
-//            System.out.println("Viso skirtingu trikampiu " + trikampiai.size());
-//            System.out.println("hash kodas" + trik.hashCode());
+            System.out.println("trik 1 hash kodas " + trik1.hashCode());
+            System.out.println("trik 2 hash kodas " + trik2.hashCode());
+            System.out.println("trik 3 hash kodas " + trik3.hashCode());
 
         }
 
@@ -67,7 +69,7 @@ import java.util.*;
         public void setC(double c) { this.c = c; }
 
 
-        private List<Double> SortTriangle (){
+        private List<Double> sortTriangle (){
             List<Double> triangleList = Arrays.asList(a, b, c);
             triangleList.sort(Comparator.naturalOrder());
             setA(triangleList.get(0));
@@ -97,11 +99,6 @@ import java.util.*;
                     Double.compare(trikampis.b, b) == 0 &&
 
                     Double.compare(trikampis.c, c) == 0;
-
-
-
-
-
         }
 
 
@@ -109,7 +106,7 @@ import java.util.*;
 
         public int hashCode() {
 
-            return Objects.hash(SortTriangle ());
+            return Objects.hash(sortTriangle ());
 
         }
 
