@@ -45,7 +45,6 @@ public class ListPredicate {
             if(filter2.test(i))System.out.println(i);
         }
 
-
     }
 
     static class MyList<E> implements Iterable<E>{
