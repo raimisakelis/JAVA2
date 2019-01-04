@@ -36,7 +36,7 @@ public class Salary {
         if (o == null || getClass() != o.getClass()) return false;//jei objektas o lygus null("tuscias") arba lyginamu objektu klases nelygios(skirtingu klasiu) grazinama false;
         Salary sal = (Salary) o;//skliausteliuose po lygybes uzrasu(Trikampis) mes kompiliatoriui pasakome, kad mes zinome, jog lyginami objektai tos pacios klases
 
-        return Objects.equals(sal,employee);
+        return Objects.equals(sal.employee,employee);
     }
 
     @Override
