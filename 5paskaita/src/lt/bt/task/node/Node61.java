@@ -1,5 +1,6 @@
 package lt.bt.task.node;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Node61 {
@@ -19,45 +20,50 @@ public class Node61 {
         a.setChildL(b);
         a.setChildR(c);
 
-        D61Node f = new D61Node("f");
-        D61Node g = new D61Node("g");
-
-
-        c.setChildL(f);
-        c.setChildR(g);
+//        D61Node f = new D61Node("f");
+//        D61Node g = new D61Node("g");
+//
+//        c.setChildL(f);
+//        c.setChildR(g);
 
         spausdinti(a);
 
-
     }
+
 
     public static void spausdinti(D61Node root) {
-        D61Node rootL = root;
-        D61Node rootR = root;
-
         print(root);
-
-        for (;rootL.getChildL() != null && rootR.getChildL() != null;){
-
-            D61Node left = rootL.getChildL();
-            D61Node right = rootL.getChildR();
-
-            if (left != null) {
-                print(left);
-                rootL = left;
-            }
-
-            if (right != null) {
-                print(right);
-                rootR = right;
-            }
-        }
-
+        List<D61Node> node = new LinkedList<>();
+        node.add(root);
+        sukti(node);
     }
+
+
+
+    public static List <D61Node> sukti(List <D61Node> rootList) {
+        List<D61Node> newRoot = new LinkedList<>();
+        List<D61Node> allRoot = new LinkedList<>();
+        if (rootList.size() != 0) {
+            for (D61Node n : rootList) {
+                if (n.getChildL() != null) newRoot.add(n.getChildL());
+                if (n.getChildR() != null) newRoot.add(n.getChildR());
+            }
+            for (D61Node node : newRoot) {
+                if (!allRoot.contains(node)){
+                    allRoot.add(node);
+                    print(node);
+                }
+            }
+            sukti(newRoot);
+        }
+       return newRoot;
+    }
+
 
     public static void print(D61Node node){
         System.out.println(node.getName());
     }
+
 
 }
 
@@ -92,4 +98,10 @@ class D61Node {
     public void setChildR(D61Node childR) {
         this.childR = childR;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
+
